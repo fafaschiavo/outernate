@@ -90,9 +90,23 @@ def login_user(request):
 
 def verify_username(request):
 	username_try = request.GET['username']
-	# result = members.objects.all(hash_id = 'ksjdfjhaksjdf')
-	# print result
-	return HttpResponse (200)
+	result = members.objects.filter(username = username_try)
+	print len(result)
+	if len(result) > 0:
+		return HttpResponse (400)
+	else:
+		return HttpResponse (200)
+
+def verify_email(request):
+	email_try = request.GET['email']
+	result = members.objects.filter(email = email_try)
+	print len(result)
+	if len(result) > 0:
+		return HttpResponse (400)
+	else:
+		return HttpResponse (200)
+
+		# fayschiavo@gmail.com
 
 def new_member(request):
 	hash_id = generate_member_hash_id()

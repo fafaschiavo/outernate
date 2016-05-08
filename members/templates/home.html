@@ -1,3 +1,22 @@
 <strong>Essa será nossa HomePage</strong>
 
 <p> <strong>Welcome to the Outernative Life!</strong> </p>
+
+<form action="{% url 'login_user' %}" id="new-member-form" method="post">
+	{% csrf_token %}
+	<br>
+	<label>Nome de usuário</label>
+	<input id="username" type="text" name="username">
+
+	<br>
+	<label>Senha</label>
+	<input id="password" type="password" name="password">
+
+	<br>
+	<button type="submit" name="action" id="new-member-form-button">Enviar</button>
+</form>
+
+<br>
+<br>
+
+<a href="{% url 'new_member' %}">Novo usuário? Cadastre-se já!</a>

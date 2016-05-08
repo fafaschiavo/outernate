@@ -6,6 +6,20 @@
 
 <form action="{% url 'include_new_member' %}" id="new-member-form" method="post">
 	{% csrf_token %}
+
+	<br>
+	<label>Nome de usuário</label>
+	<input id="username" type="text" name="username" onchange="username_verify()">
+
+	<br>
+	<label>Senha</label>
+	<input id="password" type="password" name="password">
+
+	<br>
+	<label>Repita a senha</label>
+	<input id="password_again" type="password" name="password_again">
+
+	<br>
 	<label>Nome</label>
 	<input id="first_name" type="text" name="first_name">
 
@@ -19,17 +33,18 @@
 
 	<br>
 	<label>Data de Nascimento</label>
-	<input id="birthdate" type="datetime" name="birthdate">
+	<input id="birthdate" type="datetime" name="birthdate" placeholder="dd/mm/aaaa" min="1850-01-02">
 
 	<br>
 	<button type="submit" name="action" id="new-member-form-button">Enviar</button>
 </form>
 
-
+<a href="{% url 'index' %}">Já tem cadastro? Faça login</a>
 
 
 
 <script type="text/javascript">
+
 	var $jqDate = jQuery('input[name="birthdate"]');
 
 	$jqDate.bind('keyup','keydown', function(e){
@@ -60,14 +75,24 @@
 	    
 	    $("#telephone").val(output);
 	});
-</script>
 
-<!-- 	email = models.CharField(max_length=200)
-	phone = models.CharField(max_length=200)
-	zip_code = models.CharField(max_length=200)
-	city = models.CharField(max_length=200)
-	created_at = models.DateTimeField(auto_now=False, auto_now_add=True)
-	newsletter_accepted_at = models.DateTimeField(auto_now=False, auto_now_add=True)
-	push_accepted_at = models.DateTimeField(auto_now=False, auto_now_add=True)
-	birthdate = models.DateTimeField(default=datetime.now)
-	hash_id = models.CharField(max_length=200, default=None) -->
+	function username_verify(){
+		var username = $("#username").val();
+		
+	  	$.ajax({
+		    url: '{% url 'verify_username' %}',
+		    data: { 
+		        "username": username
+		    },
+		    type: 'get', // This is the default though, you don't actually need to always mention it
+		    success: function(data) {
+		        console.log(data);
+		    },
+		    failure: function(data) { 
+		        console.log('Got an error dude');
+		    }
+		});
+	};
+
+
+</script>

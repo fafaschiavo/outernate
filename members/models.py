@@ -13,6 +13,9 @@ class members(models.Model):
 	push_accepted_at = models.DateTimeField(auto_now=False, auto_now_add=True)
 	birthdate = models.DateTimeField(default=datetime.now)
 	hash_id = models.CharField(max_length=200, default=None)
+	username = models.CharField(max_length=200, default=None)
+	email_activated = models.IntegerField(default=0)
+	phone_activated = models.IntegerField(default=0)
 
 	def __first_name__(self):
 		return self.first_name
@@ -40,6 +43,15 @@ class members(models.Model):
 
 	def __hash_id__(self):
 		return self.hash_id
+
+	def __username__(self):
+		return self.username
+
+	def __email_activated__(self):
+		return self.email_activated
+
+	def __phone_activated__(self):
+		return self.phone_activated
 
 class location(models.Model):
 	country = models.CharField(max_length=200, default='')
@@ -75,6 +87,7 @@ class images(models.Model):
 	url = models.CharField(max_length=400)
 	type_image = models.CharField(max_length=200)
 	member_id = models.IntegerField(default=0)
+	hash_id = models.CharField(max_length=200, default=None)
 
 	def __url__(self):
 		return self.url
@@ -84,3 +97,6 @@ class images(models.Model):
 
 	def __member_id__(self):
 		return self.member_id
+
+	def __hash_id__(self):
+		return self.hash_id

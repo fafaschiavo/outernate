@@ -8,8 +8,6 @@ class members(models.Model):
 	last_name = models.CharField(max_length=200)
 	email = models.CharField(max_length=200)
 	phone = models.CharField(max_length=200)
-	zip_code = models.CharField(max_length=200)
-	city = models.CharField(max_length=200)
 	created_at = models.DateTimeField(auto_now=False, auto_now_add=True)
 	newsletter_accepted_at = models.DateTimeField(auto_now=False, auto_now_add=True)
 	push_accepted_at = models.DateTimeField(auto_now=False, auto_now_add=True)
@@ -28,12 +26,6 @@ class members(models.Model):
 	def __phone__(self):
 		return self.phone
 
-	def __zip_code__(self):
-		return self.zip_code
-
-	def __city__(self):
-		return self.city
-
 	def __created_at__(self):
 		return self.created_at
 
@@ -48,6 +40,36 @@ class members(models.Model):
 
 	def __hash_id__(self):
 		return self.hash_id
+
+class location(models.Model):
+	country = models.CharField(max_length=200, default='')
+	city = models.CharField(max_length=200, default='')
+	zip_code = models.CharField(max_length=200, default='')
+	latitude = models.DecimalField(max_digits=9, decimal_places=7)
+	longitude = models.DecimalField(max_digits=9, decimal_places=7)
+	member_id = models.IntegerField(default=0)
+	is_home = models.IntegerField(default=0)
+
+	def __country__(self):
+		return self.country
+
+	def __city__(self):
+		return self.city
+
+	def __zip_code__(self):
+		return self.zip_code
+
+	def __latitude__(self):
+		return self.latitude
+
+	def __longitude__(self):
+		return self.longitude
+
+	def __member_id__(self):
+		return self.member_id
+
+	def __is_home__(self):
+		return self.is_home
 
 class images(models.Model):
 	url = models.CharField(max_length=400)

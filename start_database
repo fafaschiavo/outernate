@@ -1,0 +1,2 @@
+INSERT INTO outernate_life.members_images (url, type_image, member_id, hash_id)
+values (url, 'standard_image', 0, '686krjkxtp');

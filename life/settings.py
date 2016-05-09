@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/'
+
+DOMAIN_NAME = 'http://127.0.0.1:8000'
+# DOMAIN_NAME = 'http://outernate.life/'
 
 # Application definition
 

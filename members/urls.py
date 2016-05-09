@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^upload-img/$', views.upload_img, name='upload_img'),
     url(r'^upload-img-success/(?P<img_hash>\w{10})/', views.upload_img_success, name='upload_img_success'),
     url(r'^login/$', views.login_user, name='login_user'),
+    url(r'^logout/$', views.logout_user, name='logout_user'),
     url(r'^verify-username/', views.verify_username, name='verify_username'),
     url(r'^verify-email/', views.verify_email, name='verify_email'),
+    url(r'^profile/', views.profile, name='profile'),
 ]

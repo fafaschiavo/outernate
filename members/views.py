@@ -1,4 +1,6 @@
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from members.models import members
 from members.models import images
 from django.shortcuts import render
@@ -70,6 +72,22 @@ def create_new_member(username, password, first_name, last_name, email = False, 
 	user.save()
 	return 200
 
+def verify_username(request):
+	username_try = request.GET['username']
+	result = members.objects.filter(username = username_try)
+	if len(result) > 0:
+		return HttpResponse (400)
+	else:
+		return HttpResponse (200)
+
+def verify_email(request):
+	email_try = request.GET['email']
+	result = members.objects.filter(email = email_try)
+	if len(result) > 0:
+		return HttpResponse (400)
+	else:
+		return HttpResponse (200)
+
 # Create your views here.
 def index(request):
 	context = {}
@@ -88,25 +106,10 @@ def login_user(request):
 	else:
 	    return HttpResponse ('Usuario ou senha incorretos')
 
-def verify_username(request):
-	username_try = request.GET['username']
-	result = members.objects.filter(username = username_try)
-	print len(result)
-	if len(result) > 0:
-		return HttpResponse (400)
-	else:
-		return HttpResponse (200)
-
-def verify_email(request):
-	email_try = request.GET['email']
-	result = members.objects.filter(email = email_try)
-	print len(result)
-	if len(result) > 0:
-		return HttpResponse (400)
-	else:
-		return HttpResponse (200)
-
-		# fayschiavo@gmail.com
+def logout_user(request):
+	logout(request)
+	context = {}
+	return render(request, "home.html", context)
 
 def new_member(request):
 	hash_id = generate_member_hash_id()
@@ -124,20 +127,27 @@ def include_new_member(request):
 	create_new_member(username, password, first_name, last_name, email, phone, birthdate)
 	return HttpResponse('Sucesso')
 
+@login_required
 def upload_img (request):
-	policy_document = ('{"expiration": "2369-01-01T00:00:00Z",  "conditions": [     {"bucket": "outernatelife"},     ["starts-with", "$key", "uploads/"],    {"acl": "public-read"},    ["starts-with", "$success_action_redirect", "http://127.0.0.1:8000/members/upload-img-success/"],    ["starts-with", "$Content-Type", ""],    ["content-length-range", 0, 10048576]  ]} ')
+	policy_document = ('{"expiration": "2369-01-01T00:00:00Z",  "conditions": [     {"bucket": "outernatelife"},     ["starts-with", "$key", "uploads/"],    {"acl": "public-read"},    ["starts-with", "$success_action_redirect", ' + settings.DOMAIN_NAME + '/members/upload-img-success/"],    ["starts-with", "$Content-Type", ""],    ["content-length-range", 0, 10048576]  ]} ')
 	policy = base64.b64encode(policy_document)
 	signature = base64.b64encode(hmac.new(AWS_SECRET_ACCESS_KEY, policy, hashlib.sha1).digest())
 	hash_id = generate_image_hash_id()
-	print hash_id
 	context={'hash_id' : hash_id, 'policy' : policy , 'signature' : signature} 
 	return render (request, "upload_img.html", context)
 
+@login_required
 def upload_img_success(request, img_hash):
-	print 'foda-se'
-	print img_hash
-	print request.GET['key']
 	url = 'https://s3-sa-east-1.amazonaws.com/outernatelife/' + str(request.GET['key'])
 	response = ('success. image hash: ' + img_hash +' image url:' + url )
 	success = upload_image (url, 'profile', 0, img_hash)
 	return HttpResponse (success)
+
+@login_required
+def profile(request):
+	username = request.user
+	result = members.objects.filter(username = username)
+	user = result[0] 
+	print user.email
+	context = {'first_name': user.first_name}
+	return render(request, "profile.html", context)

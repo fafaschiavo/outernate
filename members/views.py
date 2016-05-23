@@ -21,7 +21,6 @@ def hash_id_generator(size=10, chars=string.ascii_lowercase + string.digits):
 	return ''.join(random.choice(chars) for _ in range(size))
 
 def generate_member_hash_id():
-
 	verify_existence = True
 	while verify_existence == True:
 		new_hash_id = hash_id_generator()

@@ -1,0 +1,581 @@
+1,Soma,0
+4,Proficiência,1
+5,Mining,4
+6,Woodcutting / Logging,4
+7,Firemaking,4
+8,Tailoring,4
+9,Leatherworking,4
+10,First Aid,4
+11,Smithing,4
+12,Fletching,4
+13,Farming,4
+14,"Craftings ( Marcenaria, Artesanato)",4
+15,Escotismo,4
+16,Circo,4
+17,Teatro,4
+18,Cárdio,4
+19,Musculação,4
+20,Dança,1
+21,Social,20
+22,Tango,21
+23,Kizomba,21
+24,Salsa,21
+25,Valsa,21
+26,Forró,21
+27,Samba de Gafieira,21
+28,Zouk,21
+29,Samba-Pagode,21
+30,Soltinho / Rock / Rockabilly,21
+31,Maxixe,21
+32,Lambada,21
+33,Cumbia,21
+34,Calipso,21
+35,Merengue,21
+36,Bolero,21
+37,Cha-cha-chá,21
+38,Polca,21
+39,Lindy Hop / Swing / Charleston,21
+40,Flamenco,21
+41,Funk,21
+42,Standard,21
+43,Rumba,21
+44,Cênica / Performática / Solo,20
+45,Gavota,44
+46,Dança de Roda,44
+47,Sapateado,44
+48,Balé,44
+49,Samba no pé,44
+50,Dança do Ventre,44
+51,Melbourne Shuffle,44
+52,Religiosa / Ritualística / Cerimonial,20
+53,Sufi,52
+54,Hindu,52
+55,Umbanda,52
+56,Candomblé,52
+57,Indígena,52
+58,Voodoo,52
+59,Quadrilha,52
+60,Erótica,20
+61,Can Can,60
+62,Striptease,60
+63,Pole-Dancing,60
+64,Instrumentos,1
+65,Sopro,64
+66,Madeiras,65
+67,Flauta Transversal,66
+68,Clarinete,66
+69,Oboé,66
+70,Fagote,66
+71,Corne Inglês (English Horn),66
+72,Flautim,66
+73,Metais,65
+74,Saxofone,73
+75,Tuba,73
+76,Flugelhorn,73
+77,Tin Whistle,73
+78,Gaita de Foles,73
+79,Trompa,73
+80,Tuba,73
+81,Trompete,73
+82,Trompete Piccolo,73
+83,Trombone (Vara),73
+84,Trombone (Pisto),73
+85,Cordas,64
+86,Violão,85
+87,Guitarra,85
+88,Baixo Elétrico,85
+89,Contrabaixo Acúsico,85
+90,Violino,85
+91,Viola,85
+92,Violoncelo,85
+93,Harpa,85
+94,Celesta,85
+95,Cravo,85
+96,Piano,85
+97,Percussão,64
+98,Xilofone,97
+99,Tímpano,97
+100,Steel Drum,97
+101,Marimba,97
+102,Carrilhão,97
+103,Gongo,97
+104,Caixa de Rufo,97
+105,Pandeireta,97
+106,Triângulo,97
+107,Pratos,97
+108,Bateria,97
+109,Vibraphone,97
+110,Glockenspiel,97
+111,Esportes,1
+112,Luta / Artes Marciais,111
+113,Kickboxing,112
+114,Tae-Kwon-Do,112
+115,Karatê,112
+116,Judô,112
+117,Muay-Thay,112
+118,Krav-Maga,112
+119,Capoeira,112
+120,Boxe,112
+121,Oioa,112
+122,Jiu-Jitsu,112
+123,Dambe,112
+124,Aikido,112
+125,Wing Chun,112
+126,Jeet Kune Do,112
+127,Keysi,112
+128,Luta Greco-Romana,112
+129,Esgrima,112
+130,Kabaddi,112
+131,Luta Olímpica,112
+132,MMA,112
+133,Quadra / Muro / Estádio / Campo / Taco,111
+134,Tênis,133
+135,Tênis de Mesa,133
+136,Squash,133
+137,Vôlei,133
+138,Badminton,133
+139,Paddle,133
+140,Baseball,133
+141,Softball,133
+142,Crickett,133
+143,Futebol,133
+144,Handebol,133
+145,Hóquei sobre Grama,133
+146,Polo Aquático,133
+147,Rugby de 7,133
+148,Vôlei de Praia,133
+149,Basquetebol,133
+150,Futebol,133
+151,Biribol (Vôlei Aquático),133
+152,Corfebol,133
+153,Frescobol,133
+154,Futebol Americano,133
+155,Rugby,133
+156,Futebol de Praia (Futevôlei),133
+157,Futsal,133
+158,Hóquei,133
+159,Hóquei em patins,133
+160,Hóquei no gelo,133
+161,Lacrosse,133
+162,Pádel,133
+163,Paintball,133
+164,Airsoft,133
+165,Pólo,133
+166,Pólo Aquático,133
+167,Punhobol,133
+168,Tchoukball,133
+169,Tamboréu,133
+170,Taco,133
+171,Squash,133
+172,Softbol,133
+173,Peteca,133
+174,Punhobol,133
+175,"De Marca (Tempo, Distância, Peso)",111
+176,Rafting,175
+177,Mountain-Bike,175
+178,Iatismo,175
+179,Natação em águas abertas,175
+180,Atletismo,175
+181,Halterofilismo,175
+182,Remo,175
+183,Nado Combinado,175
+184,Caiaque,175
+185,Canoagem Velocidade,175
+186,Hipismo,175
+187,Maratonas Aquáticas,175
+188,Natação,175
+189,Pentatlon Moderno,175
+190,Triathlon,175
+191,Vela,175
+192,Canoagem Slalom,175
+193,Ciclismo BMX,175
+194,Ciclismo de Estrada,175
+195,Ciclismo de Pista,175
+196,Ciclismo Mountain Bike,175
+197,Esqui,175
+198,Jet Ski,175
+199,Kitesurf,175
+200,Motovelocidade,175
+201,Rally,175
+202,Arremesso de peso,175
+203,Automobilismo,175
+204,Ciclismo,175
+205,Corrida,175
+206,Corrida com barreiras,175
+207,Corrida de Aventura,175
+208,Corrida de meio-fundo e fundo,175
+209,Corrida de velocidade,175
+210,Bobsled,175
+211,Lançamento de martelo,175
+212,Lançamento de dardo,175
+213,Lançamento de disco,175
+214,Marcha atlética (Corrida sem tirar o pé do chão),175
+215,Mergulho,175
+216,Salto,175
+217,Salto com vara,175
+218,Triplo salto,175
+219,Estético ou Técnico Combinatório,111
+220,GRD,219
+221,Ginástica Olímpica,219
+222,Skate,219
+223,Salto Ornamental,219
+224,Acrosport,219
+225,Nado Sincronizado,219
+226,Salto Sincronizado,219
+227,Ginástica de Trampolim,219
+228,Ginástica Artística,219
+229,Ginástica Rítmica,219
+230,Longboard,219
+231,Bodyboard,219
+232,Fisiculturismo,219
+233,Parkour,219
+234,Patinação artística (no Gelo),219
+235,Patinação (Sobre Rodas),219
+236,Rodeio,219
+237,Tourada,219
+238,Wakeboard,219
+239,Surf,219
+240,Ginástica acrobática,219
+241,Ginástica aeróbica,219
+242,Precisão / Alvo,111
+243,Arco e Flecha,242
+244,Dardo-de-Salão,242
+245,Golf,242
+246,Tiro Esportivo,242
+247,Bilhar,242
+248,Bocha,242
+249,Boliche,242
+250,Bumerangue,242
+251,Caça,242
+252,Frisbee,242
+253,Snooker,242
+254,Outros,111
+255,Dominó,254
+256,Pesca,254
+257,Carteado,254
+258,Xadres,254
+259,Pebolim / Matraquilho,254
+2,Psiquê,0
+260,áreas do conhecimento,2
+261,CIÊNCIAS EXATAS E DA TERRA,260
+262,MATEMÁTICA,261
+263,PROBABILIDADE E ESTATÍSTICA,261
+264,CIÊNCIA DA COMPUTAÇÃO,261
+265,ASTRONOMIA,261
+266,FÍSICA,261
+267,QUÍMICA,261
+268,GEOCIÊNCIAS,261
+269,CIÊNCIAS BIOLÓGICAS,260
+270,GENÉTICA,261
+271,MORFOLOGIA,261
+272,FISIOLOGIA,261
+273,BIOQUÍMICA,261
+274,BIOFÍSICA,261
+275,FARMACOLOGIA,261
+276,IMUNOLOGIA,261
+277,MICROBIOLOGIA,261
+278,PARASITOLOGIA,261
+279,ECOLOGIA,261
+280,OCEANOGRAFIA,261
+281,BOTÂNICA,261
+282,ZOOLOGIA,261
+283,ENGENHARIAS,260
+284,ENGENHARIA CIVIL,283
+285,ENGENHARIA SANITÁRIA,283
+286,ENGENHARIA DE TRANSPORTES,283
+287,ENGENHARIA DE MINAS,283
+288,ENGENHARIA DE MATERIAIS E METALÚRGICA,283
+289,ENGENHARIA QUÍMICA,283
+290,ENGENHARIA NUCLEAR,283
+291,ENGENHARIA MECÂNICA,283
+292,ENGENHARIA DE PRODUÇÃO,283
+293,ENGENHARIA NAVAL E OCEÂNICA,283
+294,ENGENHARIA AEROESPACIAL,283
+295,ENGENHARIA ELÉTRICA,283
+296,ENGENHARIA BIOMÉDICA,283
+297,CIÊNCIAS DA SAÚDE,260
+298,MEDICINA,297
+299,NUTRIÇÃO,297
+300,ODONTOLOGIA,297
+301,FARMÁCIA,297
+302,ENFERMAGEM,297
+303,SAÚDE COLETIVA,297
+304,EDUCAÇÃO FÍSICA,297
+305,FONOAUDIOLOGIA,297
+306,FISIOTERAPIA E TERAPIA OCUPACIONAL,297
+307,CIÊNCIAS AGRÁRIAS,260
+308,CIÊNCIAS AGRÁRIAS,307
+309,RECURSOS FLORESTAIS E ENGENHARIA FLORESTAL,307
+310,ENGENHARIA AGRÍCOLA,307
+311,ZOOTECNIA,307
+312,RECURSOS PESQUEIROS E ENGENHARIA DE PESCA,307
+313,MEDICINA VETERINÁRIA,307
+314,CIÊNCIA E TECNOLOGIA DE ALIMENTOS,307
+315,CIÊNCIAS SOCIAIS APLICADAS,260
+316,DIREITO,315
+317,ADMINISTRAÇÃO,315
+318,TURISMO,315
+319,ECONOMIA,315
+320,ARQUITETURA E URBANISMO,315
+321,DESENHO INDUSTRIAL,315
+322,PLANEJAMENTO URBANO E REGIONAL,315
+323,DEMOGRAFIA,315
+324,CIÊNCIA DA INFORMAÇÃO,315
+325,MUSEOLOGIA,315
+326,COMUNICAÇÃO,315
+327,SERVIÇO SOCIAL,315
+328,CIÊNCIAS HUMANAS,260
+329,FILOSOFIA,328
+330,TEOLOGIA,328
+331,SOCIOLOGIA,328
+332,ANTROPOLOGIA,328
+333,ARQUEOLOGIA,328
+334,HISTÓRIA,328
+335,GEOGRAFIA,328
+336,PSICOLOGIA,328
+337,EDUCAÇÃO / PEDAGOGIA,328
+338,CIÊNCIA POLÍTICA,328
+339,"LINGUÍSTICA, LETRAS E ARTES",260
+340,LINGUÍSTICA,339
+341,LETRAS,339
+342,ARTES,339
+3,Anima,0
+343,Religião,3
+344,Monoteísmo,343
+345,Abraâmicas,344
+346,Cristianismo,345
+347,Adventismo,346
+348,Assíria,346
+349,Autenticismo,346
+350,Catolicismo,346
+351,Ebionismo,346
+352,Espiritismo,346
+353,Gnosticismo,346
+354,Haymanot,346
+355,Humanístico,346
+356,Israelitas negros,346
+357,Messiânico,346
+358,Mormonismo,346
+359,Neopentecostalismo,346
+360,Ortodoxia,346
+361,Protestantismo,346
+362,Reconstrucionista,346
+363,Samaritanismo,346
+364,Testemunhas de Jeová,346
+365,Judaísmo,345
+366,Islamismo,345
+367,Sunismo,366
+368,Xiismo,366
+369,Carijismo,366
+370,Wahhabismo,366
+371,Ismaelismo,366
+372,Sufismo,366
+373,Babismo,345
+374,Fé Bahá í,345
+375,Rastafári,345
+376,Maniqueísmo,345
+377,Yarsanismo,345
+378,Cao Dai,345
+379,Iazdânismo,345
+380,Bnei Noah,345
+381,Não-abraâmicas,344
+382,Atonismo,381
+383,Ayyavazhi,381
+384,Bramanismo,381
+385,Hinduísmo,381
+386,Vixnuísmo,385
+387,Xivaismo,385
+388,Zoroastrismo,381
+389,Sikhismo,381
+390,Cao Dai,381
+391,Seicho-no-ie,381
+392,Xintoísmo,381
+393,Mitraísmo,381
+394,Religião tradicional chinesa,381
+395,Messianismo Judaico,381
+396,Messianismo Oriental,381
+397,Cientologia,381
+398,Tenrikyo,381
+399,Chendoísmo,381
+400,Unitário-Universalismo,381
+401,Pastafarianismo,381
+402,Santería,381
+403,Vodu,381
+404,Batuque,381
+405,Candomblé,381
+406,Tambor de Mina,381
+407,Xangô do Nordeste,381
+408,Umbanda,381
+409,Quimbanda,381
+410,Politeísmo,343
+411,Antigas,410
+412,Africana,411
+413,Angolana,411
+414,Árabe,411
+415,Armênica,411
+416,Asteca,411
+417,Assíria,411
+418,Babilônica,411
+419,Bantu,411
+420,Brasileira,411
+421,Chinesa,411
+422,Céltica,411
+423,Congolesa,411
+424,Egípica,411
+425,Etrusca,411
+426,Eslava,411
+427,Etíope,411
+428,Estoniana,411
+429,Escocesa,411
+430,Fenícia,411
+431,Fino-húngara,411
+432,Filandesa,411
+433,Greco-romana,411
+434,Grega,411
+435,Guaraní,411
+436,Germânica,411
+437,Havaiana,411
+438,Hitita,411
+439,Inca,411
+440,Inuíte,411
+441,Iorubá,411
+442,Khoi,411
+443,Letã,411
+444,Líbio-amrênica,411
+445,Lusitana,411
+446,Laponiana,411
+447,Maia,411
+448,Malaia,411
+449,Mamaiu,411
+450,Maori,411
+451,Mongol,411
+452,Moabita,411
+453,Navajo,411
+454,Nórdica,411
+455,Persa,411
+456,Polinésia,411
+457,Polonesa,411
+458,Rapa nui,411
+459,Romana,411
+460,Russa,411
+461,Síriaca,411
+462,Suméria,411
+463,Siamesa,411
+464,Samoieda,411
+465,Tupi-guarani,411
+466,Tailandesa,411
+467,Transilvânica,411
+468,Védica,411
+469,Bruxaria Ancestral,411
+470,Helenismo,411
+471,Wicca,411
+472,Xamanismo,411
+473,Odinismo,411
+474,Druidismo,411
+475,Kemetismo,411
+476,Teísmo Indefinido,410
+477,Satanismo,476
+478,Luciferianismo,476
+479,Ocultismo,476
+480,Não-Teístas,343
+481,Ayyavazhi,480
+482,Budismo,480
+483,Vajrayana,482
+484,Zen,482
+485,Mahayana,482
+486,Hinaiana,482
+487,Reiyukai,482
+488,Honmon Butsuryu-Shu,482
+489,Nitiren,482
+490,Teravada,482
+491,Terra Pura,482
+492,Budismo tibetano,482
+493,Taoísmo,480
+494,Confucionismo,480
+495,Jainismo,480
+496,Tenrikyo,480
+497,Conscienciologia,480
+498,Posicionamento Político,3
+499,Anarquismo,498
+500,Monarquismo,498
+501,Parlamentarismo,498
+502,Ambientalismo,498
+503,Anarquismo,498
+504,Autoritarismo,498
+505,Democratismo,498
+506,Monarquismo,498
+507,Totalitarismo,498
+508,Oligarquismo,498
+509,Posicionamento Econômico,3
+510,Capitalismo,509
+511,Comunismo,509
+512,Marxismo,511
+513,Stalinismo,511
+514,Leninismo,511
+515,Maoísmo,511
+516,Titoísmo,511
+517,Marxismo-leninismo,511
+518,Anarquismo,509
+519,Autoritarismo,509
+520,Socialismo (Social-democracia),509
+521,Conservadorismo Econômico,509
+522,Liberalismo Econômico,509
+523,Posicionamento Social,3
+524,Ambientalismo,523
+525,Centrismo,523
+526,Conservadorismo Social,523
+527,Fascismo,523
+528,Feminismo,523
+529,Individualismo,523
+530,Libertarismo (Liberalismo Social),523
+531,Nacionalismo,523
+532,Nazismo,523
+533,Orientação Sexual (Atração),3
+534,Assexualidade,533
+535,Arromanticidade,533
+536,Bissexualidade,533
+537,Birromanticidade,533
+538,Demissexual,533
+539,Heterorromanticidade,533
+540,Heterossexualidade,533
+541,Homorromanticidade,533
+542,Homossexualidade,533
+543,Panssexualidade,533
+544,Poli-amor,533
+545,Polirromanticidade,533
+546,Gênero (Identidade),3
+547,Queer,546
+548,Androgenia,546
+549,Bigênero,546
+550,Cisgênero,546
+551,Cross-Dressing,546
+552,Drag Queen,546
+553,Drag King,546
+554,Drag,546
+555,Transgênero,546
+556,Gênero-fluido,546
+557,Sexo,3
+558,Cis,557
+559,Diádico,557
+560,Masculino,557
+561,Feminino,557
+562,Interssexual,557
+563,SRS,557
+564,Trans,557
+565,Personalidade Profissional (MBTI),3
+566,ENTP,565
+567,ENTJ,565
+568,ENFP,565
+569,ENFJ,565
+570,ESTJ,565
+571,ESFJ,565
+572,ESTP,565
+573,ESFP,565
+574,INTP,565
+575,INTJ,565
+576,INFP,565
+577,INFJ,565
+578,ISTJ,565
+579,ISFJ,565
+580,ISTP,565
+581,ISFP,565

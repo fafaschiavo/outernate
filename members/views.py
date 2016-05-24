@@ -6,6 +6,7 @@ from members.models import images
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 import string
 import random
@@ -71,6 +72,15 @@ def create_new_member(username, password, first_name, last_name, email = False, 
 	user = User.objects.create_user(username = username, first_name = first_name, last_name = last_name, email = email, password = password)
 	user.save()
 	return 200
+
+def create_new_member_facebook(username, first_name, last_name, email, facebook_profile):
+	hash_id = generate_member_hash_id()
+	new_member = members(first_name = first_name, last_name = last_name, email = email, hash_id = hash_id, username = username, facebook_profile = facebook_profile)
+	new_member.save()
+	password = hash_id_generator()
+	user = User.objects.create_user(username = username, first_name = first_name, last_name = last_name, email = email, password = password)
+	user.save()
+	return password
 
 def verify_username(request):
 	username_try = request.GET['username']
@@ -144,27 +154,38 @@ def include_new_member(request):
 	else:
 	    return HttpResponse ('Usuario ou senha incorretos')
 
+@csrf_exempt
 def include_new_member_facebook(request):
 	first_name = request.POST['first_name']
 	last_name = request.POST['last_name']
 	email = request.POST['email']
-	birthdate = request.POST['birthdate']
-	username = request.POST['username']
-	password = request.POST['password']
-	phone = False
-	create_new_member(username, password, first_name, last_name, email, phone, birthdate)
-	user = authenticate(username=username, password=password)
-	if user is not None:
-	    if user.is_active:
-	        login(request, user)
-	        result = members.objects.filter(username = username)
-	        user = result[0] 
-	        context = {'first_name': user.first_name}
-	        return render(request, "profile.html", context)
-	    else:
-	        return HttpResponse ('Usuario nao ativo')
-	else:
-	    return HttpResponse ('Usuario ou senha incorretos')
+	username = email
+	link = request.POST['link']
+	image = request.POST['image']
+	print 'passou por aqui'
+	try:
+		try_user = User.objects.filter(email=email)
+		user = try_user[0]
+		login(request, user)
+		result = members.objects.filter(username = username)
+		user = result[0]
+		print 'passou por aqui2'
+		context = {'first_name': user.first_name}
+		return render(request, "profile.html", context)
+	except:
+		password = create_new_member_facebook(username, first_name, last_name, email, link)
+		user = authenticate(username=username, password=password)
+		if user is not None:
+		    if user.is_active:
+		        login(request, user)
+		        result = members.objects.filter(username = username)
+		        user = result[0] 
+		        context = {'first_name': user.first_name}
+		        return render(request, "profile.html", context)
+		    else:
+		        return HttpResponse ('Usuario nao ativo')
+		else:
+		    return HttpResponse ('Usuario ou senha incorretos')
 
 @login_required
 def upload_img (request):
@@ -172,7 +193,7 @@ def upload_img (request):
 	policy = base64.b64encode(policy_document)
 	signature = base64.b64encode(hmac.new(AWS_SECRET_ACCESS_KEY, policy, hashlib.sha1).digest())
 	hash_id = generate_image_hash_id()
-	context={'hash_id' : hash_id, 'policy' : policy , 'signature' : signature, 'aws_key' : AWS_ACCESS_KEY_ID, 'domain' : settings.DOMAIN_NAME} 
+	context = {'hash_id' : hash_id, 'policy' : policy , 'signature' : signature, 'aws_key' : AWS_ACCESS_KEY_ID, 'domain' : settings.DOMAIN_NAME} 
 	return render (request, "upload_img.html", context)
 
 @login_required
@@ -189,7 +210,3 @@ def profile(request):
 	user = result[0] 
 	context = {'first_name': user.first_name}
 	return render(request, "profile.html", context)
-
-def fb_login(request):
-	context = {}
-	return render(request, "fb_login.html", context)

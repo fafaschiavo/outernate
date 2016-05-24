@@ -16,6 +16,7 @@ class members(models.Model):
 	username = models.CharField(max_length=200, default=None)
 	email_activated = models.IntegerField(default=0)
 	phone_activated = models.IntegerField(default=0)
+	facebook_profile = models.CharField(max_length=400, default='')
 
 	def __first_name__(self):
 		return self.first_name
@@ -52,6 +53,9 @@ class members(models.Model):
 
 	def __phone_activated__(self):
 		return self.phone_activated
+
+	def __facebook_profile__(self):
+		return self.facebook_profile
 
 class location(models.Model):
 	country = models.CharField(max_length=200, default='')

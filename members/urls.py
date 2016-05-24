@@ -15,5 +15,4 @@ urlpatterns = [
     url(r'^verify-username/', views.verify_username, name='verify_username'),
     url(r'^verify-email/', views.verify_email, name='verify_email'),
     url(r'^profile/', views.profile, name='profile'),
-    url(r'^fb_login/', views.fb_login, name='fb_login'),
 ]

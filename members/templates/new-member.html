@@ -1,92 +1,228 @@
- <head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-</head> 
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<head>
+		<style>
 
-<strong>Welcome to the Outernative Life!</strong>
+			@font-face {
+				font-family:"Mahamaya";
+				src: url("https://s3-sa-east-1.amazonaws.com/outernatelife/Mahamaya.otf");
+			}
 
-<form action="{% url 'include_new_member' %}" id="new-member-form" method="post">
-	{% csrf_token %}
+			html  {
+			position: relative;
+		    min-height: 100%;	
+			}
+			#bodydiv{
+				background-image: url("https://s3-sa-east-1.amazonaws.com/outernatelife/login_background_2.png");
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			footer {
+				position: absolute;
+			    left: 0;
+			    bottom: 0;
+			    height: 100px;
+			    width: 100%;
+			}
+			.standard-font {
+				font-family: "Roboto","Helvetica","Arial",sans-serif;
+			}
+			.mahamaya {
+				font-family: "Mahamaya";
+			}
+			.demo-layout-waterfall .mdl-layout__header-row .mdl-navigation__link:last-of-type  {
+				padding-right: 0;
+			}
+			.header-attributes{
+				/*height: 90px;*/
+				height: 5vw;
+				background-color: rgba(240,245,255,0.75); /*rgba ice*/
+				box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.1);
+			}
+			.mdl-mini-footer {
+				color: #47b504; /*green*/
+				/*background-color: #2d1b07; 57330e 45290b 2d1b07*/
+			}
+			.small-content{
+				position: fixed;
+				bottom: 0px;
+				width: 100%;
+			}
+			.mdl-button{
+				width: 100%;
+				background-color: #47b504;
+			}
+			.mdl-button.mdl-button--colored { /*button text*/
+		    	color: #f0f5ff;
+		    }
+		    .mdl-textfield__label { /*Suggestion text*/
+		    	color: #358603; /*dark green, outside the pallet*/
+		    	font-size: 1.3vh !important;
+		    }
+			.mdl-textfield__label::after { /*button background*/
+		        background-color: #47b504; /*green*/
+		    }
+		    .mdl-textfield.is-invalid .mdl-textfield__input { /*label line before input*/
+		        border-color: #358603; /*dark green, outside the pallet*/
+		    }
+		    .mdl-textfield.is-invalid .mdl-textfield__label:after { /*label line after clicking*/
+		    	background-color: #f0f5ff; /*ice*/
+		    }
+		    .mdl-textfield.is-dirty .mdl-textfield__input { /*label line after input*/
+		        border-color: #47b504;
+		    }
+		    a{
+		    	color: rgb(71, 181, 4);
+		    	text-decoration: none;
+		    }
+		    .mdl-textfield__input{
+		    	font-size: 1.2rem; 
+		    }
+		    .mdl-textfield__label{
+		    	font-size: 1.2rem;
+		    }
+		</style> 
+	</head>
+	
+	<body>
+		<div id="bodydiv">
+			<div class="mdl-grid header-attributes" id="header">
+				<div class="mdl-cell mdl-cell--4-col"></div>
+				<div style="margin:0px;" class="mdl-cell mdl-cell--4-col">
+					<div style="text-align: center;">
+						<a href="/"><img src="https://s3-sa-east-1.amazonaws.com/outernatelife/Banner/banner-green.png" style="width: 70%; margin: auto; float: none;"></a>
+					</div>
+				</div>
 
-	<br>
-	<label>Nome de usuário</label>
-	<input id="username" type="text" name="username" onchange="username_verify()">
-	<label id="username_error" style="display: none; color: red;">Nome de usuário não disponível</label>
-
-	<br>
-	<label>Senha</label>
-	<input id="password" type="password" name="password">
-	<label id="password_error" style="display: none; color: red;">A senha deve ter o mínimo 6 carácteres</label>
-
-	<br>
-	<label>Repita a senha</label>
-	<input id="password_again" type="password" name="password_again">
-	<label id="password_again_error" style="display: none; color: red;">As senhas são diferentes</label>
-
-	<br>
-	<label>Nome</label>
-	<input id="first_name" type="text" name="first_name">
-
-	<br>
-	<label>Sobrenome</label>
-	<input id="last_name" type="text" name="last_name">
-
-	<br>
-	<label>Email</label>
-	<input id="email" type="email" name="email" onchange="email_verify()">
-	<label id="email_error" style="display: none; color: red;">Email já cadastrado</label>
-
-	<br>
-	<label>Data de Nascimento</label>
-	<input id="birthdate" type="datetime" name="birthdate" placeholder="dd/mm/aaaa" min="1850-01-02">
-	<label id="birthday_error" style="display: none; color: red;">Data Inválida</label>
-
-	<br>
-	<button type="submit" name="action" id="new-member-form-button">Enviar</button>
-</form>
-
-<a href="{% url 'index' %}">Já tem cadastro? Faça login</a>
-<br>
-<a href="{% url 'logout_user' %}">Faça Logout</a>
+				<div class="mdl-cell mdl-cell--4-col"></div>
+			</div>
 
 
+			<div class="mdl-grid" id="main-content"> <!-- Grid -->
+				<div class="mdl-cell mdl-cell--4-col standard-font">
+					<p></p>
+				</div>
+				<div class="mdl-cell mdl-cell--4-col">
+					<div id="login-content" style="background: rgba(255,255,255,0.90); margin-top: 1em; width: 100%; padding: 10px; padding-top: 20px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);">
+						<div style="text-align: center;">
+							<p class="standard-font" style="font-size: 2vw; margin-bottom: 0px; color: #358603;">Novo jogador?</p>
+						</div>
+						<form action="{% url 'include_new_member' %}" autocomplete="on" id="new-member-form" method="post" style="text-align: center;">
+							{% csrf_token %}
+							<div class="mdl-grid" style="padding-bottom: 0px; padding-top: 0px;">
+								<div class="mdl-cell mdl-cell--6-col" style="margin-bottom: 0px;">
+									
+									<div class="input-container">
+									    <div class="mdl-textfield mdl-js-textfield">
+									  	    <input class="mdl-textfield__input" id="username" type="text" name="username" onchange="username_verify()" required>
+									        <label class="mdl-textfield__label" for="sample1">Usuário...</label>
+									        <label id="username_error" style="display: none; color: red; font-size: 1.2vh;">Nome de usuário não disponível</label>
+									    </div>
+									</div>
+
+									<div class="input-container">
+									    <div class="mdl-textfield mdl-js-textfield">
+									        <input class="mdl-textfield__input" id="password" type="password" name="password" required>
+									        <label class="mdl-textfield__label" for="sample1">Senha...</label>
+									        <label id="password_error" style="display: none; color: red; font-size: 1.2vh;">A senha deve ter o mínimo 6 carácteres</label>
+									    </div>
+									</div>
+
+									<div class="input-container">
+									    <div class="mdl-textfield mdl-js-textfield">
+									        <input class="mdl-textfield__input" id="password_again" type="password" name="password_again" required>
+									        <label class="mdl-textfield__label" for="sample1">Senha novamente...</label>
+									        <label id="password_again_error" style="display: none; color: red; font-size: 1.2vh;">As senhas são diferentes</label>
+									    </div>
+									</div>
+
+								</div>
+								<div class="mdl-cell mdl-cell--6-col" style="margin-bottom: 0px;">
+									
+									<div class="input-container">
+									    <div class="mdl-textfield mdl-js-textfield">
+									        <input class="mdl-textfield__input" id="first_name" type="text" name="first_name" required>
+									        <label class="mdl-textfield__label" for="sample1">Nome...</label>
+									    </div>
+									</div>
+
+									<div class="input-container">
+									    <div class="mdl-textfield mdl-js-textfield">
+									        <input class="mdl-textfield__input" id="last_name" type="text" name="last_name" required>
+									        <label class="mdl-textfield__label" for="sample1">Sobrenome...</label>
+									    </div>
+									</div>
+
+									<div class="input-container">
+									    <div class="mdl-textfield mdl-js-textfield">
+									        <input class="mdl-textfield__input" id="email" type="email" name="email" onchange="email_verify()" required>
+									        <label class="mdl-textfield__label" for="sample1">Email...</label>
+									        <label id="email_error" style="display: none; color: red; font-size: 1.2vh;">Email já cadastrado</label>
+									    </div>
+									</div>
+
+									<div class="input-container">
+									    <div class="mdl-textfield mdl-js-textfield">
+									        <input class="mdl-textfield__input" id="birthdate" type="datetime" name="birthdate" min="1850-01-02" required>
+									        <label class="mdl-textfield__label" for="sample1">Nascimento (dd/mm/aaaa)...</label>
+									        <label id="birthday_error" style="display: none; color: red;">Data Inválida</label>
+									    </div>
+									</div>
+
+								</div>
+							</div>
+						    <div style="text-align: center;"> 
+								<button type="submit" name="action" id="new-member-form-button" style="width: 40%;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" disabled="true">
+									Cadastrar
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--4-col"></div>
+			</div>	
+		</div>	
+
+		<div id="bodydiv2" style="height: 800px;">
+			Informação aleatoria
+		</div>		
+
+		<!-- Footer -->
+		<div class="mdl-mini-footer" id="footer"> 
+			<div class="mdl-mini-footer__left-section">
+			<div class="mdl-logo">Outernate Life</div>
+			<ul class="mdl-mini-footer__link-list">
+				<li><a href="#">Ajuda</a></li>
+				<li><a href="#">Termos de compromisso</a></li>
+			</ul>
+			</div>
+		</div>
+	</body>
+			
+</html>
 
 <script type="text/javascript">
 
-	var $jqDate = jQuery('input[name="birthdate"]');
-	var flag_birthday = false;
-	var flag_email = false;
-	var flag_username = false;
-	var flag_password = false;
-	var flag_password_again = false;
-	$("#new-member-form-button").prop('disabled', true);
+	var bodydiv_height = $("#bodydiv").height();
+	var window_height = $(window).height();
+	var max_size = window_height - 100;
+	var window_width = $(window).width();
+	var proportional_height = window_width*0.53;
+	var footer_height = $("#footer").outerHeight();
+	var min_body_height = window_height - footer_height;
+	$("#bodydiv").height(proportional_height);
 
-	$jqDate.bind('keyup','keydown', function(e){
-	    if(e.which !== 8) { 
-	        var numChars = $jqDate.val().length;
-	        if(numChars === 2 || numChars === 5){
-	            var thisVal = $jqDate.val();
-	            thisVal += '/';
-	            $jqDate.val(thisVal);
-	        }
-	  }
-	});
-
-	$("#telephone").on("change keyup paste", function () {
-	    var output;
-	    var ddd
-	    var phone
-	    var input = $("#telephone").val();
-	    if (input.length == 2 ) {
-	    	ddd = input.substr(0, 2);
-	    	ddd = '(' + ddd + ') ';
-	    	phone = input.substr(2);
-	    	output = ddd + phone;
-	    }else{
-	    	output = input;
-	    }
-	    
-	    $("#telephone").val(output);
-	});
+	var header_height = $("#header").outerHeight();
+	var login_block = $("#login-content").outerHeight();
+	var empty_space = proportional_height - (login_block + header_height);
+	var login_block_margin = empty_space/2;
+	$("#login-content").css("margin-top", login_block_margin+"px");
 
 	$("#birthdate").on("change keyup paste", function () {
 		var date_length = $("#birthdate").val().length;
@@ -188,5 +324,3 @@
 	}
 
 </script>
-
-<!-- $("#new-member-form-button").prop('disabled', true); -->

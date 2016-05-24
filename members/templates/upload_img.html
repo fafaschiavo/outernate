@@ -5,9 +5,9 @@
   <body> 
     <form action="https://outernatelife.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
       <input type="hidden" name="key" value="uploads/{{hash_id}}-${filename}"> <!-- key: s3 filename from hash_id -->
-      <input type="hidden" name="AWSAccessKeyId" value="AKIAJGRIAYDUIEHT22BQ"> <!-- access key -->
+      <input type="hidden" name="AWSAccessKeyId" value="{{aws_key}}"> <!-- access key -->
       <input type="hidden" name="acl" value="public-read"> <!-- changes the file access control policy to public-read only -->
-      <input type="hidden" name="success_action_redirect" value="http://127.0.0.1:8000/members/upload-img-success/{{hash_id}}/"> <!-- value="http://localhost/">  /{{hash_id}}/ -->
+      <input type="hidden" name="success_action_redirect" value="{{domain}}/upload-img-success/{{hash_id}}/"> <!-- value="http://localhost/">  /{{hash_id}}/ -->
       <input type="hidden" name="policy" value="{{policy}}"> <!-- policy document base 64 encoded -->
       <input type="hidden" name="signature" value="{{signature}}"> <!-- signature(base 64 encoded) -->
       <input type="hidden" name="Content-Type" value="image/*"> <!-- will only accept image files --> 
@@ -19,9 +19,9 @@
       <input type="submit" value="Upload File to S3"> 
     </form> 
   </body>
-</html>	
+</html> 
 
 <script type="text/javascript">
-	// window.location = "http://www.terra.com.br";
+  // window.location = "http://www.terra.com.br";
 </script>
 

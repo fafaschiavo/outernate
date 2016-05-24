@@ -100,3 +100,35 @@ class images(models.Model):
 
 	def __hash_id__(self):
 		return self.hash_id
+
+class skills(models.Model):
+	skill_name = models.CharField(max_length=200, default=None)
+	father_id = models.IntegerField(default=0)
+	description = models.CharField(max_length=2000)
+	status = models.IntegerField(default=0)
+
+	def __skill_name__ (self):
+		return self.skill_name
+
+	def __father_id__(self):
+		return self.father_id
+
+	def __description__ (self):
+		return self.description
+
+	def __status__ (self):
+		return self.status
+
+class user_skills(models.Model):
+	user_id = models.IntegerField(default=0)
+	skill_id = models.IntegerField(default=0)
+	level = models.IntegerField(default=0)
+
+	def __user_id__(self):
+		return self.user_id
+
+	def __skill_id__(self):
+		return self.skill_id
+
+	def __level__(self):
+		return self.level	

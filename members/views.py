@@ -6,14 +6,15 @@ from members.models import images
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.conf import settings
 import string
 import random
 import base64
 import hmac, hashlib
 
 #boto configuration#
-AWS_ACCESS_KEY_ID = 'AKIAJGRIAYDUIEHT22BQ'
-AWS_SECRET_ACCESS_KEY = 'NAubTvZco64L7nHcYahawLQLECC6onKWXSfQTVVL'
+AWS_ACCESS_KEY_ID = 'AKIAI74NBIB7IBA2J4IQ'
+AWS_SECRET_ACCESS_KEY = 'EcuUJ4wnMAif+DUwFjGkuTSKZ8tyH0TfdqPqZ+JR'
 
 # Create your procedures here
 
@@ -99,11 +100,17 @@ def login_user(request):
 	if user is not None:
 	    if user.is_active:
 	        login(request, user)
-	        return HttpResponse ('Usuario Logado')
+	        result = members.objects.filter(username = username)
+	        user = result[0] 
+	        context = {'first_name': user.first_name}
+	        return render(request, "profile.html", context)
 	    else:
 	        return HttpResponse ('Usuario nao ativo')
 	else:
 	    return HttpResponse ('Usuario ou senha incorretos')
+
+def login_facebook(request):
+	return HttpResponse (200)
 
 def logout_user(request):
 	logout(request)
@@ -124,15 +131,48 @@ def include_new_member(request):
 	password = request.POST['password']
 	phone = False
 	create_new_member(username, password, first_name, last_name, email, phone, birthdate)
-	return HttpResponse('Sucesso')
+	user = authenticate(username=username, password=password)
+	if user is not None:
+	    if user.is_active:
+	        login(request, user)
+	        result = members.objects.filter(username = username)
+	        user = result[0] 
+	        context = {'first_name': user.first_name}
+	        return render(request, "profile.html", context)
+	    else:
+	        return HttpResponse ('Usuario nao ativo')
+	else:
+	    return HttpResponse ('Usuario ou senha incorretos')
+
+def include_new_member_facebook(request):
+	first_name = request.POST['first_name']
+	last_name = request.POST['last_name']
+	email = request.POST['email']
+	birthdate = request.POST['birthdate']
+	username = request.POST['username']
+	password = request.POST['password']
+	phone = False
+	create_new_member(username, password, first_name, last_name, email, phone, birthdate)
+	user = authenticate(username=username, password=password)
+	if user is not None:
+	    if user.is_active:
+	        login(request, user)
+	        result = members.objects.filter(username = username)
+	        user = result[0] 
+	        context = {'first_name': user.first_name}
+	        return render(request, "profile.html", context)
+	    else:
+	        return HttpResponse ('Usuario nao ativo')
+	else:
+	    return HttpResponse ('Usuario ou senha incorretos')
 
 @login_required
 def upload_img (request):
-	policy_document = ('{"expiration": "2369-01-01T00:00:00Z",  "conditions": [     {"bucket": "outernatelife"},     ["starts-with", "$key", "uploads/"],    {"acl": "public-read"},    ["starts-with", "$success_action_redirect", ' + settings.DOMAIN_NAME + '/members/upload-img-success/"],    ["starts-with", "$Content-Type", ""],    ["content-length-range", 0, 10048576]  ]} ')
+	policy_document = ('{"expiration": "2369-01-01T00:00:00Z",  "conditions": [     {"bucket": "outernatelife"},     ["starts-with", "$key", "uploads/"],    {"acl": "public-read"},    ["starts-with", "$success_action_redirect", "' + settings.DOMAIN_NAME + '/upload-img-success/"],    ["starts-with", "$Content-Type", ""],    ["content-length-range", 0, 10048576]  ]} ')
 	policy = base64.b64encode(policy_document)
 	signature = base64.b64encode(hmac.new(AWS_SECRET_ACCESS_KEY, policy, hashlib.sha1).digest())
 	hash_id = generate_image_hash_id()
-	context={'hash_id' : hash_id, 'policy' : policy , 'signature' : signature} 
+	context={'hash_id' : hash_id, 'policy' : policy , 'signature' : signature, 'aws_key' : AWS_ACCESS_KEY_ID, 'domain' : settings.DOMAIN_NAME} 
 	return render (request, "upload_img.html", context)
 
 @login_required
@@ -147,6 +187,9 @@ def profile(request):
 	username = request.user
 	result = members.objects.filter(username = username)
 	user = result[0] 
-	print user.email
 	context = {'first_name': user.first_name}
 	return render(request, "profile.html", context)
+
+def fb_login(request):
+	context = {}
+	return render(request, "fb_login.html", context)

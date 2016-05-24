@@ -42,7 +42,7 @@ def generate_image_hash_id():
 			verify_existence = False
 	return new_hash_id
 
-def upload_image (url, type_image, member_id,hash_id):
+def upload_image(url, type_image, member_id,hash_id):
 	try: 
 		img = images(url=url, type_image=type_image, member_id=member_id, hash_id=hash_id)
 		img.save()
@@ -52,6 +52,20 @@ def upload_image (url, type_image, member_id,hash_id):
 
 def update_location(member_id, city = None, zip_code = None, country = None, latitude = None, longitude = None, is_home = None):
 	pass
+
+def upload_profile_image(member_id, image):
+	image_hash = generate_image_hash_id()
+	type_image = 'profile'
+	image_history = images.objects.filter(member_id = member_id).order_by('-id')
+	if len(image_history) == 0:
+		upload_image(image, type_image, member_id, image_hash)
+		return 200
+	else:
+		for each_image in image_history:
+			if each_image.url == image:
+				return 200
+		upload_image(image, type_image, member_id, image_hash)
+		return 200
 
 def process_date(date):
 	day = date.split("/",1)[0] #day
@@ -162,14 +176,13 @@ def include_new_member_facebook(request):
 	username = email
 	link = request.POST['link']
 	image = request.POST['image']
-	print 'passou por aqui'
 	try:
 		try_user = User.objects.filter(email=email)
 		user = try_user[0]
 		login(request, user)
 		result = members.objects.filter(username = username)
 		user = result[0]
-		print 'passou por aqui2'
+		upload_profile_image(user.id, image)
 		context = {'first_name': user.first_name}
 		return render(request, "profile.html", context)
 	except:
@@ -180,6 +193,7 @@ def include_new_member_facebook(request):
 		        login(request, user)
 		        result = members.objects.filter(username = username)
 		        user = result[0] 
+		        upload_profile_image(user.id, image)
 		        context = {'first_name': user.first_name}
 		        return render(request, "profile.html", context)
 		    else:

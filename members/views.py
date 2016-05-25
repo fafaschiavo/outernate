@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from members.models import members
 from members.models import images
+from members.models import skills
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
@@ -222,5 +223,35 @@ def profile(request):
 	username = request.user
 	result = members.objects.filter(username = username)
 	user = result[0] 
-	context = {'first_name': user.first_name}
+	number_of_sons = 4
+	urls = (
+		'https://s3-sa-east-1.amazonaws.com/outernatelife/skill-tree-badges-teste/back-1-01.png',
+		'https://s3-sa-east-1.amazonaws.com/outernatelife/skill-tree-badges-teste/back-2-01.png',
+		'https://s3-sa-east-1.amazonaws.com/outernatelife/skill-tree-badges-teste/back-3-01.png',
+		'https://s3-sa-east-1.amazonaws.com/outernatelife/skill-tree-badges-teste/back-4-01.png',
+		)
+	index = {
+		0,
+		1,
+		2,
+		3,
+	}
+	context = {
+	'first_name': user.first_name,
+	'number_of_sons': number_of_sons,
+	'urls': urls,
+	'index': index
+				}
 	return render(request, "profile.html", context)
+
+def get_skill_sons(request):
+	clicked_skill = request.GET['clicked_id']
+	sons = skills.objects.filter(father_id = clicked_skill)
+	clicked_skill_object = skills.objects.get(id = clicked_skill)
+	back_image = images.objects.get(id = clicked_skill_object.image_id)
+	return_concatenated_urls = back_image.url
+	for son in sons:
+		back_image = images.objects.get(id = son.image_id)
+		return_concatenated_urls = return_concatenated_urls + '{}' + back_image.url
+		print back_image.url
+	return HttpResponse (return_concatenated_urls)

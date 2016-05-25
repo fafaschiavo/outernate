@@ -1,8 +1,85 @@
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+</head> 
+
 <strong>Bem-vindo de volta {{first_name}}</strong>
-<br>
-<br>
 <br>
 <strong>Welcome to the future profile page</strong>
 <br>
 <br>
 <a href="{% url 'logout_user' %}">Faça Logout</a>
+<br>
+<br>
+<button id="clear">clear</button>
+
+<canvas id="myCanvas" style="border:1px solid #000000; background-color: #000;"></canvas>
+<br>
+<br>
+<img id="example" src="https://s3-sa-east-1.amazonaws.com/outernatelife/skill-tree-badges-teste/back-4-01.png">
+
+<script type="text/javascript">
+
+	var canvas = document.getElementById('myCanvas');
+	var context = canvas.getContext('2d');
+	var canvas_width = 800;
+	var canvas_height = 800;
+	var margin = 50;
+	var standard_size = 110;
+	canvas.width = canvas_width;
+	canvas.height = canvas_height;
+	var number_of_sons;
+
+	function draw_image(x_size, y_size, x_position, y_position, src){
+		imageObj = new Image();
+	  	imageObj.src = src;
+		imageObj.onload = function() {
+			context.drawImage(imageObj, x_position, y_position, x_size, y_size);
+		};
+	};
+
+	function erase_canvas(){
+		context.clearRect(0, 0, canvas.width, canvas.height);
+	};
+
+	document.getElementById('clear').addEventListener('click', function() {
+		erase_canvas();
+	}, false);
+
+	imageObj = {};
+	x_size = {};
+	y_size = {};
+	x_position = {};
+	y_position = {};
+	x_origin = {};
+	y_origin = {};
+
+	function refresh_canvas(urls){
+		number_of_skills = (urls.length);
+		number_of_sons = number_of_skills - 1;
+		for (var n = 1; n < number_of_skills; n++) {
+			
+		    x_size[n] = standard_size;
+		    y_size[n] = standard_size;
+		    x_position[n] = (n)*(canvas_width/(number_of_sons+1)) - (x_size[n]);
+		    // y_position[n] = canvas_height - (margin + y_size[n]);
+		    y_position[n] = margin;
+		    x_origin[n] = x_position[n] + x_size[n]/2;
+		    y_origin[n] = y_position[n] + y_size[n]/2;
+		    draw_image(x_size[n], y_size[n], x_origin[n], y_origin[n], urls[n]);
+		}
+	};
+
+	$.ajax({
+	    url: "{% url 'get_skill_sons' %}",
+	    type: 'get',
+	    data: { clicked_id: 1},
+	    success: function(data) {
+	        urls = data.split("{}")
+	        refresh_canvas(urls);
+	    },
+	    failure: function(data) { 
+	        console.log('Got an error dude');
+	    }
+	});
+
+</script>

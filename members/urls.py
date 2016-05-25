@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^verify-username/', views.verify_username, name='verify_username'),
     url(r'^verify-email/', views.verify_email, name='verify_email'),
     url(r'^profile/', views.profile, name='profile'),
+    url(r'^get-skill-sons/', views.get_skill_sons, name='get_skill_sons'),
 ]

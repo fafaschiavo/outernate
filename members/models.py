@@ -110,6 +110,7 @@ class skills(models.Model):
 	father_id = models.IntegerField(default=0)
 	description = models.CharField(max_length=2000)
 	status = models.IntegerField(default=0)
+	image_id = models.IntegerField(default=0)
 
 	def __skill_name__ (self):
 		return self.skill_name
@@ -123,6 +124,9 @@ class skills(models.Model):
 	def __status__ (self):
 		return self.status
 
+	def __image_id__ (self):
+		return self.image_id
+
 class user_skills(models.Model):
 	user_id = models.IntegerField(default=0)
 	skill_id = models.IntegerField(default=0)
@@ -135,4 +139,4 @@ class user_skills(models.Model):
 		return self.skill_id
 
 	def __level__(self):
-		return self.level	
+		return self.level
